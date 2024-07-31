@@ -22,9 +22,10 @@ function App() {
         </ul>
       </div>
       <RentalsList />
-      {/*<footer>Appartment Rentals </footer>
-      <img src={GitIcon} alt="github icon" />
-      </footer>*/}
+      <footer className="footer">
+        <p>Appartment Rentals</p>
+        <img src={GitIcon} alt="github icon" className="footer-icon" />
+      </footer>
     </div>
   );
 }
