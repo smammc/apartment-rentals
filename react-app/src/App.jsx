@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import menuIcon from "./assets/menu-icon.png";
+import GitIcon from "./assets/png-clipart-github-computer-icons-repository-github-angle-git.png";
+import RentalsList from "./components/RentalsList";
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
       >
         <img className="menu" src={menuIcon} alt="menu-icon" />
       </nav>
+
       <div className="sidebar">
         <ul>
           <li>Homepage</li>
@@ -18,7 +21,10 @@ function App() {
           <li>About Us</li>
         </ul>
       </div>
-      <footer></footer>
+      <RentalsList />
+      {/*<footer>Appartment Rentals </footer>
+      <img src={GitIcon} alt="github icon" />
+      </footer>*/}
     </div>
   );
 }
