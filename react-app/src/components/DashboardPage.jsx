@@ -2,7 +2,7 @@ import { useState } from "react";
 import rentalsList from "../assets/rentals.json";
 import RentalCard from "./RentalCard";
 
-function RentalsList() {
+export default function Dashboard() {
   const [rentals, setRentals] = useState(rentalsList.results);
 
   const deleteItem = (rentalId) => {
@@ -29,4 +29,4 @@ function RentalsList() {
   );
 }
 
-export default RentalsList;
+
