@@ -1,0 +1,11 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #404fed;
+  width: 200px;
+  position: fixed;
+  top: 50px;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
