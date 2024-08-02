@@ -9,10 +9,7 @@ export default function Sidebar() {
           <NavLink to="/">Homepage</NavLink>
         </li>
         <li>
-          <NavLink to="/DashboardPage">Apartments</NavLink>
-        </li>
-        <li>
-          <NavLink to="/AboutPage">About Us</NavLink>
+          <NavLink to="/aboutPage">About Us</NavLink>
         </li>
       </ul>
     </div>

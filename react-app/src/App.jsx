@@ -6,6 +6,7 @@ import Dashboard from "./components/DashboardPage";
 import Sidebar from "./components/Sidebar";
 import AboutPage from "./components/AboutPage";
 import Error from "./components/Error";
+import ItemDetails from "./components/ItemDetailsPage";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
       <Sidebar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/aboutPage" element={<AboutPage />} />
+        <Route path="/rental/:rentalId" element={<ItemDetails />} />
         <Route path="*" element={<Error />} />
       </Routes>
 
