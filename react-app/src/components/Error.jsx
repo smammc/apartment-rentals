@@ -4,7 +4,7 @@ const imgURL =
   "https://www.dpmarketingcommunications.com/wp-content/uploads/2016/11/404-Page-Featured-Image.png";
 
 export default function Error() {
-  const navigate = UseNavigate();
+  const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate("/");

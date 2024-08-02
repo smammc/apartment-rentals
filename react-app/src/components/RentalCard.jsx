@@ -6,13 +6,12 @@ function RentalCard(props) {
       <h3>{rental.name}</h3>
       <h4>{rental.property_type}</h4>
       <h5>
-        {rental.country},{rental.city}
+        {rental.country}, {rental.city}
       </h5>
 
-      <button
-        onClick={() => clickToDelete(rental.id)}
-        className="btn-delete"
-      ></button>
+      <button onClick={() => clickToDelete(rental.id)} className="btn-delete">
+        Delete
+      </button>
     </div>
   );
 }

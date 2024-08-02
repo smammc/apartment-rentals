@@ -21,12 +21,8 @@ export default function Dashboard() {
             rental={rental}
             clickToDelete={deleteItem}
           />
-        ) : (
-          ""
-        )
+        ) : null
       )}
     </div>
   );
 }
-
-

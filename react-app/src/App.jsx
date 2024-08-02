@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import menuIcon from "./assets/menu-icon.png";
 import GitIcon from "./assets/png-clipart-github-computer-icons-repository-github-angle-git.png";
 import Dashboard from "./components/DashboardPage";
-import { Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import AboutPage from "./components/AboutPage";
-import NotFoundPage from "./components/NotFoundPage";
+import Error from "./components/Error";
 
 function App() {
   return (
@@ -15,20 +14,22 @@ function App() {
         className="navbar"
         style={{ width: document.body.offsetWidth, top: 0 }}
       >
-        <img onClick className="menu" src={menuIcon} alt="menu-icon" />
+        <img className="menu" src={menuIcon} alt="menu-icon" />
       </nav>
 
       <Sidebar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Error />} />
       </Routes>
 
       <footer className="footer">
-        <p>Appartment Rentals</p>
+        <p>Apartment Rentals</p>
         <img src={GitIcon} alt="github icon" className="footer-icon" />
       </footer>
     </div>
   );
 }
+
 export default App;
