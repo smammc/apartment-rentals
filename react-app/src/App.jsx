@@ -1,35 +1,44 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import menuIcon from "./assets/menu-icon.png";
-import GitIcon from "./assets/png-clipart-github-computer-icons-repository-github-angle-git.png";
-import Dashboard from "./components/DashboardPage";
+import rentalsList from "./assets/rentals.json";
+
+// Pages
+import AboutPage from "./Pages/AboutPage";
+import ErrorPage from "./Pages/ErrorPage";
+import ItemDetailsPage from "./Pages/ItemDetailsPage";
+
+// Components
+import Dashboard from "./Pages/DashboardPage";
 import Sidebar from "./components/Sidebar";
-import AboutPage from "./components/AboutPage";
-import Error from "./components/Error";
-import ItemDetails from "./components/ItemDetailsPage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
+  const [rentals, setRentals] = useState(rentalsList.results);
+
+  const deleteItem = (rentalId) => {
+    const filteredRentals = rentals.filter((rental) => rental.id !== rentalId);
+    setRentals(filteredRentals);
+  };
+
   return (
     <div className="App">
-      <nav
-        className="navbar"
-        style={{ width: document.body.offsetWidth, top: 0 }}
-      >
-        <img className="menu" src={menuIcon} alt="menu-icon" />
-      </nav>
-
+      <Navbar />
       <Sidebar />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route
+          path="/"
+          element={<Dashboard rentals={rentals} deleteItem={deleteItem} />}
+        />
         <Route path="/aboutPage" element={<AboutPage />} />
-        <Route path="/rental/:rentalId" element={<ItemDetails />} />
-        <Route path="*" element={<Error />} />
+        <Route
+          path="/rental/:rentalId"
+          element={<ItemDetailsPage rentals={rentals} />}
+        />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
-
-      <footer className="footer">
-        <p>Apartment Rentals</p>
-        <img src={GitIcon} alt="github icon" className="footer-icon" />
-      </footer>
+      <Footer />
     </div>
   );
 }
