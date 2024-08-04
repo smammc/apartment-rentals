@@ -1,11 +1,14 @@
 import RentalListing from "../components/RentalListing";
 
-export default function Dashboard(props) {
-  const { rentals, deleteItem } = props;
-
+export default function Dashboard({ rentals, setRentals, deleteItem }) {
+  console.log(rentals);
   return (
     <div>
-      <RentalListing rentals={rentals} deleteItem={deleteItem} />
+      <RentalListing
+        rentals={rentals}
+        setRentals={setRentals}
+        deleteItem={deleteItem}
+      />
     </div>
   );
 }

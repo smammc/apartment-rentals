@@ -1,8 +1,7 @@
 import RentalCard from "./RentalCard";
 
-export default function RentalListing(props) {
-  const { rentals, deleteItem } = props;
-
+export default function RentalListing({ rentals, setRentals, deleteItem }) {
+  console.log(rentals);
   return (
     <div>
       <h2>List of Rentals</h2>
@@ -12,6 +11,7 @@ export default function RentalListing(props) {
           <RentalCard
             key={rental.id}
             rental={rental}
+            setRentals={setRentals}
             clickToDelete={deleteItem}
           />
         ) : null

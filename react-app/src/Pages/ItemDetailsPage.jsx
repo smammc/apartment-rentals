@@ -16,7 +16,6 @@ export default function ItemDetailsPage({ rentals }) {
         </div>
         <div>
           Type: {selectedRental.property_type}
-          Room type: {selectedRental.room_type}
           Cancellation: {selectedRental.cancellation_policy}
         </div>
         <div>

@@ -25,18 +25,3 @@ function RentalCard(props) {
 }
 
 export default RentalCard;
-
-/*import { Link } from "react-router-dom";
-export default function Card({ item, deleteFunc }) {
-  return (
-    <li className="card">
-      <Link to={`/students/${item.id}?showAge=hide&showBootcamp=hide`}>
-        {item.name}
-      </Link>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <Link to={`/students/${item.id}/edit`}>✏️</Link>
-        <button onClick={() => deleteFunc(item.id)}>🗑️</button>
-      </div>
-    </li>
-  );
-}*/

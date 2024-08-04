@@ -13,6 +13,7 @@ import Dashboard from "./Pages/DashboardPage";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AddRental from "./components/AddRental";
 
 function App() {
   const [rentals, setRentals] = useState(rentalsList.results);
@@ -22,14 +23,29 @@ function App() {
     setRentals(filteredRentals);
   };
 
+  const createRental = (newRental) => {
+    const updatedRentals = [...rentals, newRental];
+    setRentals(updatedRentals);
+  };
+
   return (
     <div className="App">
       <Navbar />
       <Sidebar />
       <Routes>
         <Route
+          path="/newRental"
+          element={<AddRental createRental={createRental} />}
+        />
+        <Route
           path="/"
-          element={<Dashboard rentals={rentals} deleteItem={deleteItem} />}
+          element={
+            <Dashboard
+              rentals={rentals}
+              setRentals={setRentals}
+              deleteItem={deleteItem}
+            />
+          }
         />
         <Route path="/aboutPage" element={<AboutPage />} />
         <Route
