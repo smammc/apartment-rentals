@@ -8,14 +8,14 @@ function RentalCard(props) {
   return (
     <div className="RentalCard">
       <div key={rental.id}>
-        <Link to={`/rental/${rental.id}`} />
-        <h3>{rental.name}</h3>
-        {/* <img src={rental.picture_url.url} /> */}
-        <h4>{rental.property_type}</h4>
-        <h5>
-          {rental.country}, {rental.city}
-        </h5>
-        <Link />
+        <Link to={`/rental/${rental.id}`}>
+          <h3>{rental.name}</h3>
+          {/* <img src={rental.picture_url.url} /> */}
+          <h4>{rental.property_type}</h4>
+          <h5>
+            {rental.country}, {rental.city}
+          </h5>
+        </Link>
       </div>
       <button onClick={() => clickToDelete(rental.id)} className="btn-delete">
         Delete

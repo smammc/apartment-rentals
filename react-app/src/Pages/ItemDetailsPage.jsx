@@ -1,8 +1,9 @@
 import { useParams, Navigate } from "react-router-dom";
 
 export default function ItemDetailsPage({ rentals }) {
-  const { itemId } = useParams();
-  const selectedRental = rentals.filter((rental) => rental.id === itemId)[0];
+  const { rentalId } = useParams();
+  const selectedRental = rentals.filter((rental) => rental.id === rentalId)[0];
+
   if (!selectedRental) return <Navigate to="/not-found" />;
 
   return (
@@ -14,21 +15,21 @@ export default function ItemDetailsPage({ rentals }) {
           host: {selectedRental.host_name}
         </div>
         <div>
-          Type: {rentals.property_type}
-          Room type: {rentals.room_type}
-          Cancellation: {rentals.cancellation_policy}
+          Type: {selectedRental.property_type}
+          Room type: {selectedRental.room_type}
+          Cancellation: {selectedRental.cancellation_policy}
         </div>
         <div>
-          Persons: {rentals.accommodates}
-          Bedrooms: {rentals.bedrooms}
-          Beds: {rentals.beds}
-          Bathrooms: {rentals.bathrooms}
+          Persons: {selectedRental.accommodates}
+          Bedrooms: {selectedRental.bedrooms}
+          Beds: {selectedRental.beds}
+          Bathrooms: {selectedRental.bathrooms}
         </div>
         <div>
-          Price: {rentals.price}
-          Review: {rentals.review_scores_rating}
+          Price: {selectedRental.price}
+          Review: {selectedRental.review_scores_rating}
         </div>
-        <div>{rentals.description}</div>
+        <div>{selectedRental.description}</div>
       </div>
     </div>
   );
