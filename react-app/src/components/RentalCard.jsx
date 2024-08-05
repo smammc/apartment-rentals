@@ -17,9 +17,13 @@ function RentalCard(props) {
           </h5>
         </Link>
       </div>
+      <div></div>
       <button onClick={() => clickToDelete(rental.id)} className="btn-delete">
         Delete
       </button>
+      <Link className="edit-button" to={`/rental/${rental.id}/edit-rental`}>
+        ✎
+      </Link>
     </div>
   );
 }

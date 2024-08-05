@@ -1,7 +1,6 @@
 import RentalCard from "./RentalCard";
 
 export default function RentalListing({ rentals, setRentals, deleteItem }) {
-  console.log(rentals);
   return (
     <div>
       <h2>List of Rentals</h2>

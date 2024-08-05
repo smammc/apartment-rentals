@@ -2,10 +2,9 @@
   display: flex;
   flex-direction: column;
   background-color: #0576ff;
-  width: 200px;
+  width: 10%;
   position: fixed;
-  top: 50px;
-  align-items: center;
-  gap: 10px;
+  top: 100px;
+  align-items: left;
   height: 100%;
 }

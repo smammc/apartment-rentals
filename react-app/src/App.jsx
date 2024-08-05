@@ -7,13 +7,14 @@ import rentalsList from "./assets/rentals.json";
 import AboutPage from "./Pages/AboutPage";
 import ErrorPage from "./Pages/ErrorPage";
 import ItemDetailsPage from "./Pages/ItemDetailsPage";
+import AddRental from "./Pages/AddRental";
 
 // Components
 import Dashboard from "./Pages/DashboardPage";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import AddRental from "./components/AddRental";
+import EditRental from "./Pages/EditRental";
 
 function App() {
   const [rentals, setRentals] = useState(rentalsList.results);
@@ -30,13 +31,9 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar createRental={createRental} />
       <Sidebar />
       <Routes>
-        <Route
-          path="/newRental"
-          element={<AddRental createRental={createRental} />}
-        />
         <Route
           path="/"
           element={
@@ -47,10 +44,15 @@ function App() {
             />
           }
         />
-        <Route path="/aboutPage" element={<AboutPage />} />
+        <Route path="/add-rental" element={<AddRental />} />
+        <Route path="/about-page" element={<AboutPage />} />
         <Route
           path="/rental/:rentalId"
           element={<ItemDetailsPage rentals={rentals} />}
+        />
+        <Route
+          path="/rental/:rentalId/edit-rental"
+          element={<EditRental rentals={rentals} setRentals={setRentals} />}
         />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
