@@ -1,10 +1,10 @@
 import { useState } from "react";
-import "./AddRental.css";
+import { useNavigate } from "react-router-dom";
 
 export default function AddRental({ createRental }) {
   const [name, setName] = useState("");
   const [host, setHost] = useState("");
-  const [type, setType] = useState("");
+  const [type, setType] = useState("Apartment");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [cancellation, setCancellation] = useState("");
@@ -14,24 +14,12 @@ export default function AddRental({ createRental }) {
   const [price, setPrice] = useState(0);
   const [review, setReview] = useState(0);
 
-  const handleName = (e) => setName(e.target.value);
-  const handleHost = (e) => setHost(e.target.value);
-  const handleType = (e) => setType(e.target.value);
-  const handleCity = (e) => setCity(e.target.value);
-  const handleCountry = (e) => setCountry(e.target.value);
-  const handleCancellation = (e) => setCancellation(e.target.value);
-  const handlePersons = (e) => setPersons(Number(e.target.value));
-  const handleBeds = (e) => setBeds(Number(e.target.value));
-  const handleBathrooms = (e) => setBathrooms(Number(e.target.value));
-  const handlePrice = (e) => setPrice(Number(e.target.value));
-  const handleReview = (e) => setReview(Number(e.target.value));
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const randomNumber = Math.floor(1000000 + Math.random() * 9000000);
-    const newId = randomNumber.toString();
     const newRental = {
-      id: newId,
+      id: (Math.random() * 1000000).toString(),
       name,
       host,
       type,
@@ -44,13 +32,11 @@ export default function AddRental({ createRental }) {
       price,
       review,
     };
-    console.log(newRental);
     createRental(newRental);
 
-    ///reset state
     setName("");
     setHost("");
-    setType("");
+    setType("Apartment");
     setCity("");
     setCountry("");
     setCancellation("");
@@ -59,99 +45,147 @@ export default function AddRental({ createRental }) {
     setBathrooms(0);
     setPrice(0);
     setReview(0);
+    navigate("/");
   };
 
   return (
-    <div className="AddRental">
-      <h4>Add a Rental</h4>
-      <form onSubmit={handleSubmit}>
-        <div className="input-wrapper">
-          <label>Name:</label>
-          <input type="text" name="name" value={name} onChange={handleName} />
-        </div>
-        <div className="input-wrapper">
-          <label>Host:</label>
-          <input type="text" name="Host" value={host} onChange={handleHost} />
-        </div>
-
-        <div className="input-wrapper">
-          <label>Type:</label>
-          <select name="type" value={type} onChange={handleType}>
-            <option value="Apartment">Apartment</option>
-            <option value="Loft">Loft</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div className="input-wrapper">
-          <label>City:</label>
-          <input type="text" name="City" value={host} onChange={handleCity} />
-        </div>
-        <div className="input-wrapper">
-          <label>Country:</label>
-          <input
-            type="text"
-            name="Country"
-            value={host}
-            onChange={handleCountry}
-          />
-        </div>
-        <div className="input-wrapper">
-          <label>Cancellation:</label>
-          <input
-            type="text"
-            name="Cancellation"
-            value={cancellation}
-            onChange={handleCancellation}
-          />
-        </div>
-
-        <div className="input-wrapper">
-          <label>Persons:</label>
-          <input
-            type="number"
-            name="Person"
-            value={persons}
-            onChange={handlePersons}
-          />
-        </div>
-
-        <div className="input-wrapper">
-          <label>Beds:</label>
-          <input type="number" name="Beds" value={beds} onChange={handleBeds} />
-        </div>
-        <div className="input-wrapper">
-          <label>Bathrooms:</label>
-          <input
-            type="number"
-            name="Bathrooms"
-            value={bathrooms}
-            onChange={handleBathrooms}
-          />
-        </div>
-
-        <div className="input-wrapper">
-          <label>Price:</label>
-          <input
-            type="number"
-            name="Price"
-            value={price}
-            onChange={handlePrice}
-          />
-        </div>
-
-        <div className="input-wrapper">
-          <label>Review:</label>
-          <input
-            type="number"
-            name="Review"
-            value={review}
-            onChange={handleReview}
-          />
-        </div>
-
-        <button type="submit">Submit</button>
-      </form>
+    <div className="flex justify-center mt-24">
+      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+        <h4 className="text-xl font-semibold mb-4">Add a Rental</h4>
+        <form className="space-y-4">
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Name:
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Host:
+            </label>
+            <input
+              type="text"
+              value={host}
+              onChange={(e) => setHost(e.target.value)}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Type:
+            </label>
+            <select
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              className="mt-1 p-2 border rounded-md w-full"
+            >
+              <option value="Apartment">Apartment</option>
+              <option value="Loft">Loft</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              City:
+            </label>
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Country:
+            </label>
+            <input
+              type="text"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Cancellation:
+            </label>
+            <input
+              type="text"
+              value={cancellation}
+              onChange={(e) => setCancellation(e.target.value)}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Persons:
+            </label>
+            <input
+              type="number"
+              value={persons}
+              onChange={(e) => setPersons(Number(e.target.value))}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Beds:
+            </label>
+            <input
+              type="number"
+              value={beds}
+              onChange={(e) => setBeds(Number(e.target.value))}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Bathrooms:
+            </label>
+            <input
+              type="number"
+              value={bathrooms}
+              onChange={(e) => setBathrooms(Number(e.target.value))}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Price:
+            </label>
+            <input
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(Number(e.target.value))}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <div className="input-wrapper">
+            <label className="block text-sm font-medium text-gray-700">
+              Review:
+            </label>
+            <input
+              type="number"
+              value={review}
+              onChange={(e) => setReview(Number(e.target.value))}
+              className="mt-1 p-2 border rounded-md w-full"
+            />
+          </div>
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

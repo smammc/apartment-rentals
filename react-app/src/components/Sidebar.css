@@ -1,10 +1,6 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  background-color: #0576ff;
-  width: 10%;
-  position: fixed;
-  top: 100px;
-  align-items: left;
-  height: 100%;
+  width: 15%;
+  align-items: start;
 }

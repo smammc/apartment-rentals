@@ -1,5 +1,8 @@
 .add-button {
-  position: absolute;
-  justify-content: center;
-  justify-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.menu {
+  cursor: pointer;
 }
